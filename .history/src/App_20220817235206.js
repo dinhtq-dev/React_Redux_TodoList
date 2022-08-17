@@ -1,17 +1,18 @@
 import "./App.css";
 
-import React from "react";
+import React, { useId } from "react";
 
 // import Header from "./components/Header";
 
 const App = () => {
+  const id = useId();
   return (
     <div className="container mt-5">
       <div className="row text-center">
         <h1>TODO APP REACT REDUX</h1>
       </div>
 
-      <form className="form-inline d-flex gap-3">
+      <form className="form-inline d-flex">
         <input
           className="form-control mr-sm-2"
           type="search"
@@ -27,22 +28,22 @@ const App = () => {
         <div className="custom-control custom-radio custom-control-inline d-flex gap-2">
           <input
             type="radio"
-            id="customRadioInline1"
+            id={id}
             name="customRadioInline1"
             className="custom-control-input mr-5"
           />
-          <label className="custom-control-label" htmlFor="customRadioInline1">
+          <label className="custom-control-label" htmlFor={id}>
             All
           </label>
         </div>
         <div className="custom-control custom-radio custom-control-inline d-flex gap-2">
           <input
             type="radio"
-            id="customRadioInline2"
+            id={id}
             name="customRadioInline1"
             className="custom-control-input mr-5"
           />
-          <label className="custom-control-label" htmlFor="customRadioInline2">
+          <label className="custom-control-label" htmlFor={id}>
             Completed
           </label>
         </div>
@@ -53,9 +54,7 @@ const App = () => {
             name="customRadioInline1"
             className="custom-control-input mr-5"
           />
-          <label className="custom-control-label" htmlFor="customRadioInline3">
-            Todo
-          </label>
+          <label className="custom-control-label">Todo</label>
         </div>
       </div>
 
@@ -67,10 +66,7 @@ const App = () => {
 
       <h2>List Todo</h2>
 
-      <ul
-        className="list-group"
-        style={{ maxHeight: "350px", overflow: "auto" }}
-      >
+      <ul className="list-group">
         <li className="list-group-item">
           Some content goes here<span className="badge">1</span>
         </li>
@@ -78,31 +74,10 @@ const App = () => {
           Some content goes here<span className="badge">2</span>
         </li>
         <li className="list-group-item">
-          Some content goes here<span className="badge">2</span>
+          Some content goes here<span className="badge">3</span>
         </li>
         <li className="list-group-item">
-          Some content goes here<span className="badge">2</span>
-        </li>
-        <li className="list-group-item">
-          Some content goes here<span className="badge">2</span>
-        </li>
-        <li className="list-group-item">
-          Some content goes here<span className="badge">2</span>
-        </li>
-        <li className="list-group-item">
-          Some content goes here<span className="badge">2</span>
-        </li>
-        <li className="list-group-item">
-          Some content goes here<span className="badge">2</span>
-        </li>
-        <li className="list-group-item">
-          Some content goes here<span className="badge">2</span>
-        </li>
-        <li className="list-group-item">
-          Some content goes here<span className="badge">2</span>
-        </li>
-        <li className="list-group-item">
-          Some content goes here<span className="badge">2</span>
+          Some content goes here<span className="badge">4</span>
         </li>
       </ul>
 

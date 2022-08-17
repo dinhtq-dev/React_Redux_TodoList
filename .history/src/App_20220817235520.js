@@ -69,19 +69,10 @@ const App = () => {
 
       <ul
         className="list-group"
-        style={{ maxHeight: "350px", overflow: "auto" }}
+        style={{ maxHeight: "400px", overflow: "auto" }}
       >
         <li className="list-group-item">
           Some content goes here<span className="badge">1</span>
-        </li>
-        <li className="list-group-item">
-          Some content goes here<span className="badge">2</span>
-        </li>
-        <li className="list-group-item">
-          Some content goes here<span className="badge">2</span>
-        </li>
-        <li className="list-group-item">
-          Some content goes here<span className="badge">2</span>
         </li>
         <li className="list-group-item">
           Some content goes here<span className="badge">2</span>

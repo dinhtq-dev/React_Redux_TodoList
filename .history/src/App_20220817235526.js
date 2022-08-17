@@ -95,15 +95,6 @@ const App = () => {
         <li className="list-group-item">
           Some content goes here<span className="badge">2</span>
         </li>
-        <li className="list-group-item">
-          Some content goes here<span className="badge">2</span>
-        </li>
-        <li className="list-group-item">
-          Some content goes here<span className="badge">2</span>
-        </li>
-        <li className="list-group-item">
-          Some content goes here<span className="badge">2</span>
-        </li>
       </ul>
 
       <div className="mt-5 ">
