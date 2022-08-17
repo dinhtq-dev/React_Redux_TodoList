@@ -1,0 +1,51 @@
+import "./App.css";
+
+import React from "react";
+// import Header from "./components/Header";
+
+const App = () => (
+  <div className="container mt-5">
+    <div className="row text-center">
+      <h1>TODO APP REACT REDUX</h1>
+    </div>
+
+    <form className="form-inline d-flex">
+      <input
+        className="form-control mr-sm-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
+        Search
+      </button>
+    </form>
+
+    <div className="row">
+      <div class="custom-control custom-radio custom-control-inline">
+        <input
+          type="radio"
+          id="customRadioInline1"
+          name="customRadioInline1"
+          class="custom-control-input"
+        />
+        <label class="custom-control-label" for="customRadioInline1">
+          Toggle this custom radio
+        </label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input
+          type="radio"
+          id="customRadioInline2"
+          name="customRadioInline1"
+          class="custom-control-input"
+        />
+        <label class="custom-control-label" for="customRadioInline2">
+          Or toggle this other custom radio
+        </label>
+      </div>
+    </div>
+  </div>
+);
+
+export default App;
