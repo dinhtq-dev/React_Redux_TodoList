@@ -8,12 +8,19 @@ export const getListTodo = createSelector(
   getFilterSearch,
   (todoList, searchValue) => {
     return todoList.filter((todo) => {
-      return todo.name
-        ?.toLowerCase()
-        .includes(searchValue.search.toLowerCase()) &&
-        todo.priority === searchValue.priority
-        ? todo.priority === searchValue.priority
-        : !todo.priority === searchValue.priority;
+      const keyword = searchValue.search.toLowerCase();
+      const todoName = todo.name?.toLowerCase();
+
+      // searchValue.status: all completed todo, todo.completed: true false
+
+      return (
+        ((keyword && todoName.includes(keyword)) || !keyword) &&
+        ((todo.completed && searchValue.status === "completed") ||
+          searchValue.status === "all" ||
+          (!todo.completed && searchValue.status === "todo")) &&
+        ((searchValue.priority && todo.priority === searchValue.priority) ||
+          !searchValue.priority)
+      );
     });
   }
 );

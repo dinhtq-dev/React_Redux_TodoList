@@ -4,7 +4,7 @@ import { searchFilter } from "../stores/actions";
 const FilterTodo = () => {
   const dispatch = useDispatch();
   const [inputSearch, setInputSearch] = useState("");
-  const [inputStatus, setInputStatus] = useState("");
+  const [inputStatus, setInputStatus] = useState("all");
   const [selectPriority, setSelectPriority] = useState("");
 
   const handleValueChange = (setState, event) => {
@@ -104,6 +104,7 @@ const FilterTodo = () => {
         onChange={(event) => handleValueChange(setSelectPriority, event)}
         value={selectPriority}
       >
+        <option value="">All</option>
         <option value="medium">Medium</option>
         <option value="high">High</option>
         <option value="low">Low</option>

@@ -1,6 +1,6 @@
 const initialState = {
   search: "",
-  status: "",
+  status: "all",
   priority: "",
 };
 const filterTodo = (state = initialState, action) => {

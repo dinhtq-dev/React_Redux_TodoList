@@ -3,7 +3,7 @@ const initialState = [
     id: "5bfbb60a-85ed-453f-9157-b26ab0b38dca",
     name: "Di choi",
     priority: "low",
-    completed: false,
+    completed: true,
   },
   {
     id: "bb59a24e-1ff3-4653-9431-4dd69f2b29f8",
