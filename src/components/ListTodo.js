@@ -6,7 +6,7 @@ import { getListTodo } from "../stores/selecters";
 
 const ListTodo = () => {
   const dispatch = useDispatch();
-  const listTodo = useSelector((state) => getListTodo(state));
+  const listTodo = useSelector(getListTodo);
 
   const [inputText, setInputText] = useState("");
   const [selectPriority, setSelectPriority] = useState("low");

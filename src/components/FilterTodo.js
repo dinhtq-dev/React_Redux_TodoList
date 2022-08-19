@@ -4,6 +4,13 @@ import { searchInputFilterList } from "../stores/actions";
 const FilterTodo = () => {
   const dispatch = useDispatch();
   const [inputSearch, setInputSearch] = useState("");
+  const [selectPriority, setSelectPriority] = useState("low");
+  const [inputText, setInputText] = useState("");
+
+  const handleValueChange = (setState, event) => {
+    event.preventDefault();
+    setState(event.target.value);
+  };
 
   const handleInputSearchChange = (event) => {
     setInputSearch(event.target.value);
@@ -67,6 +74,8 @@ const FilterTodo = () => {
             id="customRadioInline3"
             name="customRadioInline1"
             className="custom-control-input mr-5"
+            value={inputText}
+            onChange={(event) => handleValueChange(setInputText, event)}
           />
           <label className="custom-control-label" htmlFor="customRadioInline3">
             Todo
@@ -74,10 +83,15 @@ const FilterTodo = () => {
         </div>
       </div>
 
-      <select className="form-select mb-4" aria-label="Default select example">
-        <option value="1">Medium</option>
-        <option value="2">High</option>
-        <option value="3">Low</option>
+      <select
+        className="form-select mb-4"
+        aria-label="Default select example"
+        onChange={(event) => handleValueChange(setSelectPriority, event)}
+        value={selectPriority}
+      >
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+        <option value="low">Low</option>
       </select>
     </>
   );
