@@ -1,4 +1,19 @@
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { searchInputFilterList } from "../stores/actions";
 const FilterTodo = () => {
+  const dispatch = useDispatch();
+  const [inputSearch, setInputSearch] = useState("");
+
+  const handleInputSearchChange = (event) => {
+    setInputSearch(event.target.value);
+  };
+
+  const handleSearchButtonClick = (event) => {
+    event.preventDefault();
+    dispatch(searchInputFilterList(inputSearch));
+  };
+
   return (
     <>
       <form className="form-inline d-flex gap-3">
@@ -7,8 +22,14 @@ const FilterTodo = () => {
           type="search"
           placeholder="Search"
           aria-label="Search"
+          onChange={handleInputSearchChange}
+          value={inputSearch}
         />
-        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
+        <button
+          className="btn btn-outline-success my-2 my-sm-0"
+          type="submit"
+          onClick={handleSearchButtonClick}
+        >
           Search
         </button>
       </form>
@@ -21,7 +42,11 @@ const FilterTodo = () => {
             name="customRadioInline1"
             className="custom-control-input mr-5"
           />
-          <label className="custom-control-label" htmlFor="customRadioInline1">
+          <label
+            className="custom-control-label"
+            htmlFor="customRadioInline1"
+            value="all"
+          >
             All
           </label>
         </div>

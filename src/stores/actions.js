@@ -7,7 +7,21 @@ export const setValueChange = (data) => {
 
 export const addTodoAction = (data) => {
   return {
-    type: "addTodo",
+    type: "listTodo/addTodo",
+    payload: data,
+  };
+};
+
+export const deleteTodoItem = (data) => {
+  return {
+    type: "listTodo/deleteItem",
+    payload: data,
+  };
+};
+
+export const searchInputFilterList = (data) => {
+  return {
+    type: "filter/inputSearch",
     payload: data,
   };
 };

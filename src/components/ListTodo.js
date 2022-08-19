@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodoAction } from "../stores/actions";
+import { addTodoAction, deleteTodoItem } from "../stores/actions";
 import { v4 as uuIdv4 } from "uuid";
 import { getListTodo } from "../stores/selecters";
 
@@ -31,8 +31,15 @@ const ListTodo = () => {
     setSelectPriority("low");
   };
 
-  const handleDeleteTodo = (item) => (item) => {
-    console.log(item);
+  const handleDeleteTodo = (item) => dispatch(deleteTodoItem(item));
+
+  const checkClassName = (priority) => {
+    const className = {
+      high: "btn btn-outline-danger",
+      low: "btn btn-outline-secondary",
+      medium: "btn btn-outline-primary",
+    };
+    return className[priority];
   };
   return (
     <>
@@ -49,15 +56,15 @@ const ListTodo = () => {
             >
               <p> {item.name}</p>
               <div className="d-flex gap-3">
+                <button type="button" className={checkClassName(item.priority)}>
+                  {item.priority}
+                </button>
                 <button
                   type="button"
                   className="btn btn-danger"
-                  onClick={handleDeleteTodo(item)}
+                  onClick={() => handleDeleteTodo(item)}
                 >
                   Delete
-                </button>
-                <button type="button" className="btn btn-primary">
-                  Primary
                 </button>
               </div>
             </li>
