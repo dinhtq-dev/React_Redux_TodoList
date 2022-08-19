@@ -19,9 +19,9 @@ export const deleteTodoItem = (data) => {
   };
 };
 
-export const searchInputFilterList = (data) => {
+export const searchFilter = (data) => {
   return {
-    type: "filter/inputSearch",
+    type: "filter/searchFilter",
     payload: data,
   };
 };

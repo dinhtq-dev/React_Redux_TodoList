@@ -1,14 +1,14 @@
 const initialState = {
   search: "",
-  status: "all",
-  priority: "low",
+  status: "",
+  priority: "",
 };
 const filterTodo = (state = initialState, action) => {
   switch (action.type) {
-    case "filter/inputSearch":
+    case "filter/searchFilter":
       return {
         ...state,
-        search: action.payload,
+        ...action.payload,
       };
     default:
       return state;

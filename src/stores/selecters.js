@@ -6,9 +6,14 @@ export const originListTodo = (state) => state.listTodo;
 export const getListTodo = createSelector(
   originListTodo,
   getFilterSearch,
-  (todoList, searchText) => {
+  (todoList, searchValue) => {
     return todoList.filter((todo) => {
-      return todo.name?.toLowerCase().includes(searchText.search.toLowerCase());
+      return todo.name
+        ?.toLowerCase()
+        .includes(searchValue.search.toLowerCase()) &&
+        todo.priority === searchValue.priority
+        ? todo.priority === searchValue.priority
+        : !todo.priority === searchValue.priority;
     });
   }
 );

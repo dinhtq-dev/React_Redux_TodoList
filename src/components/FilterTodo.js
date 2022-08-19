@@ -1,25 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { searchInputFilterList } from "../stores/actions";
+import { searchFilter } from "../stores/actions";
 const FilterTodo = () => {
   const dispatch = useDispatch();
   const [inputSearch, setInputSearch] = useState("");
-  const [selectPriority, setSelectPriority] = useState("low");
-  const [inputText, setInputText] = useState("");
+  const [inputStatus, setInputStatus] = useState("");
+  const [selectPriority, setSelectPriority] = useState("");
 
   const handleValueChange = (setState, event) => {
-    event.preventDefault();
     setState(event.target.value);
-  };
-
-  const handleInputSearchChange = (event) => {
-    setInputSearch(event.target.value);
   };
 
   const handleSearchButtonClick = (event) => {
     event.preventDefault();
-    dispatch(searchInputFilterList(inputSearch));
+    dispatch(
+      searchFilter({
+        search: inputSearch,
+        status: inputStatus,
+        priority: selectPriority,
+      })
+    );
   };
+
+  useEffect(() => {
+    // if (!inputStatus) return;
+    dispatch(
+      searchFilter({
+        search: inputSearch,
+        status: inputStatus,
+        priority: selectPriority,
+      })
+    );
+  }, [inputStatus, selectPriority]);
 
   return (
     <>
@@ -29,7 +41,7 @@ const FilterTodo = () => {
           type="search"
           placeholder="Search"
           aria-label="Search"
-          onChange={handleInputSearchChange}
+          onChange={(event) => handleValueChange(setInputSearch, event)}
           value={inputSearch}
         />
         <button
@@ -48,12 +60,11 @@ const FilterTodo = () => {
             id="customRadioInline1"
             name="customRadioInline1"
             className="custom-control-input mr-5"
-          />
-          <label
-            className="custom-control-label"
-            htmlFor="customRadioInline1"
             value="all"
-          >
+            onChange={(event) => handleValueChange(setInputStatus, event)}
+            checked={inputStatus === "all"}
+          />
+          <label className="custom-control-label" htmlFor="customRadioInline1">
             All
           </label>
         </div>
@@ -63,6 +74,9 @@ const FilterTodo = () => {
             id="customRadioInline2"
             name="customRadioInline1"
             className="custom-control-input mr-5"
+            value="completed"
+            onChange={(event) => handleValueChange(setInputStatus, event)}
+            checked={inputStatus === "completed"}
           />
           <label className="custom-control-label" htmlFor="customRadioInline2">
             Completed
@@ -74,8 +88,9 @@ const FilterTodo = () => {
             id="customRadioInline3"
             name="customRadioInline1"
             className="custom-control-input mr-5"
-            value={inputText}
-            onChange={(event) => handleValueChange(setInputText, event)}
+            value="todo"
+            onChange={(event) => handleValueChange(setInputStatus, event)}
+            checked={inputStatus === "todo"}
           />
           <label className="custom-control-label" htmlFor="customRadioInline3">
             Todo
