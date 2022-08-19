@@ -1,11 +1,15 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addTodoAction } from "../stores/actions";
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuIdv4 } from "uuid";
+import { getListTodo } from "../stores/selecters";
+
 const ListTodo = () => {
   const dispatch = useDispatch();
+  const listTodo = useSelector((state) => getListTodo(state));
+
   const [inputText, setInputText] = useState("");
-  const [selectPriority, setSelectPriority] = useState("");
+  const [selectPriority, setSelectPriority] = useState("low");
 
   const handleSelectChange = (setState, event) => {
     event.preventDefault();
@@ -14,55 +18,51 @@ const ListTodo = () => {
 
   const addTodo = (e) => {
     e.preventDefault();
+    if (!inputText) return alert("Please input todo");
     dispatch(
       addTodoAction({
-        id: uuidv4(),
+        id: uuIdv4(),
         name: inputText,
         priority: selectPriority,
         completed: false,
       })
     );
+    setInputText("");
+    setSelectPriority("low");
+  };
+
+  const handleDeleteTodo = (item) => (item) => {
+    console.log(item);
   };
   return (
     <>
       <h2>List Todo</h2>
       <ul
         className="list-group"
-        style={{ maxHeight: "350px", overflow: "auto" }}
+        style={{ maxHeight: "350px", overflow: "auto", minHeight: "200px" }}
       >
-        <li className="list-group-item">
-          Some content goes here<span className="badge">1</span>
-        </li>
-        <li className="list-group-item">
-          Some content goes here<span className="badge">2</span>
-        </li>
-        <li className="list-group-item">
-          Some content goes here<span className="badge">2</span>
-        </li>
-        <li className="list-group-item">
-          Some content goes here<span className="badge">2</span>
-        </li>
-        <li className="list-group-item">
-          Some content goes here<span className="badge">2</span>
-        </li>
-        <li className="list-group-item">
-          Some content goes here<span className="badge">2</span>
-        </li>
-        <li className="list-group-item">
-          Some content goes here<span className="badge">2</span>
-        </li>
-        <li className="list-group-item">
-          Some content goes here<span className="badge">2</span>
-        </li>
-        <li className="list-group-item">
-          Some content goes here<span className="badge">2</span>
-        </li>
-        <li className="list-group-item">
-          Some content goes here<span className="badge">2</span>
-        </li>
-        <li className="list-group-item">
-          Some content goes here<span className="badge">2</span>
-        </li>
+        {listTodo.map((item) => {
+          return (
+            <li
+              className="list-group-item d-flex justify-content-between"
+              key={uuIdv4()}
+            >
+              <p> {item.name}</p>
+              <div className="d-flex gap-3">
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  onClick={handleDeleteTodo(item)}
+                >
+                  Delete
+                </button>
+                <button type="button" className="btn btn-primary">
+                  Primary
+                </button>
+              </div>
+            </li>
+          );
+        })}
       </ul>
       <div className="mt-5 ">
         <form className="form-inline d-flex gap-3">
@@ -71,6 +71,7 @@ const ListTodo = () => {
             type="search"
             placeholder="Todo"
             aria-label="Search"
+            value={inputText}
             onChange={(event) => handleSelectChange(setInputText, event)}
           />
           <select
@@ -78,6 +79,7 @@ const ListTodo = () => {
             aria-label="Default select example"
             style={{ width: "150px" }}
             onChange={(event) => handleSelectChange(setSelectPriority, event)}
+            value={selectPriority}
           >
             <option value="medium">Medium</option>
             <option value="high">High</option>
