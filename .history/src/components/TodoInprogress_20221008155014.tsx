@@ -12,7 +12,11 @@ const TodoInprogress = (props: TodoInprogressProps) => {
     const handleEdit = (item: ITodo) => onEditTodoItem(item);
     const handleDelete = (item: ITodo) => onDeleteTodo(item);
     const handleCheckbox = (item: ITodo) => changeStatusTodo ? changeStatusTodo(item) : null;
-    const todoSort = todoList.sort( (a, b) => a.id === b.id ? 0 : (a.id > b.id ? -1 : 1))
+    const todoSort = todoList.sort( (a, b) => {
+        if(a.id > b.id) return 1;
+        if(a.id < b.id) return -1;
+        return 0
+    })
     return (
         <div>
             {
