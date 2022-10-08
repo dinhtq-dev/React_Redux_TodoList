@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+.addTodo {
+    border: none;
+    outline: none;
+    padding: 10px 30px;
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin-right: 30px;
+    color: antiquewhite;
+    font-size: 16px;
+    flex: 1;
+    margin-right: 30px;
+}
+.addTodo:focus {
+    transform: scale(.98);
+}
+.btnAddTodo {
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10.4px);
+    -webkit-backdrop-filter: blur(10.4px);
+    border: 1px solid rgba(255, 255, 255, 0.37);
+    padding: 10px 30px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.btnAddTodo:hover {
+    opacity: 0.7;
+    transform: scale(.98);
+}

@@ -1,0 +1,44 @@
+
+
+.container {
+    border: none;
+    outline: none;
+    padding: 10px 30px;
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.container h1 {
+    font-size: 16px;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 16px;
+}
+
+.container > div {
+   display: flex;
+   gap: 10px;
+}
+
+.container > div button {
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10.4px);
+    -webkit-backdrop-filter: blur(10.4px);
+    border: 1px solid rgba(255, 255, 255, 0.37);
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.container > div button:hover {
+    opacity: 0.7;
+    transform: scale(.98);
+}
